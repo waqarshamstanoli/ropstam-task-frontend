@@ -7,6 +7,10 @@ import AlertOne from "../../components/AlertOne";
 import { useAuthContext } from "../../context/AuthContext";
 import { tryLogin } from "../../api";
 import { errorResponse } from "../../helpers/functions";
+import FacebookIcon from "../../assets/facebook.svg"
+import GoogleIcon from "../../assets/google.svg"
+import appleIcon from "../../assets/apple.svg"
+
 
 const validationSchema = Yup.object().shape({
   email: Yup.string()
@@ -41,14 +45,14 @@ function Login() {
   };
 
   return (
-    <div className="grid grid-rows-1 min-h-screen bg-black">
+    <div className="grid grid-rows-1 min-h-screen bg-black px-2">
       <div className="grid grid-cols-12 gap-2 h-full items-center justify-center">
-        <div className="col-span-6"></div>
+        <div className="col-span-12 md:col-span-6 signinBackground"></div>
 
-        <div className="col-span-6">
-          <div className="card">
-            <h1 className="text-4xl font-bold font-jakarta text-left">Welcome back</h1>
-            <h6 className="text-lg font-normal text-gray-500 font-jakarta text-left">
+        <div className="col-span-12 md:col-span-6">
+          <div className="card w-full mx-auto p-2 md:p-8 rounded-2xl shadow-lg ">
+            <h1 className="md:text-4xl text-2xl font-bold font-jakarta text-left">Welcome back</h1>
+            <h6 className="text-lg mt-2 font-normal text-gray-500 font-jakarta text-left">
               Welcome to the login page, please enter your identity to access your account
             </h6>
             <form id="react-login-form" onSubmit={handleSubmit(onSubmit)}>
@@ -59,10 +63,10 @@ function Login() {
 
              
               <div className="relative mt-4">
-                <label className="leading-7 text-start text-black fmSaira text-xl font-medium">
+                <label className="leading-7 text-start text-white fmSaira text-xl font-medium">
                   Your Email
                 </label>
-                <div className="relative">
+                <div className="relative mt-2">
                   <input
                     type="email"
                     placeholder="Enter your email"
@@ -74,10 +78,10 @@ function Login() {
               </div>
 
               <div className="relative mt-4">
-                <label className="leading-7 text-start text-black fmSaira text-xl font-medium">
+                <label className="leading-7 text-start text-white fmSaira text-xl font-medium">
                   Your Password
                 </label>
-                <div className="relative">
+                <div className="relative mt-2">
                   <input
                     type="password"
                     placeholder="Enter your password"
@@ -97,13 +101,21 @@ function Login() {
                 {isSubmitting ? "Processing" : "Login"}
               </button>
             </form>
+            <p className="text-center text-gray-600 text-2xl font-normal mt-6">Or login with</p>
+            <div className="flex justify-center mt-8">
+            <img src={FacebookIcon} alt="facebook" width={70}/>
+            <img src={GoogleIcon} alt="Google" width={70} className="mx-6" />
 
-            <p className="leading-7 mt-4 text-center text-gray-100 text-2xl font-jakarta font-normal">
+            <img src={appleIcon} alt="apple" width={70} />
+            </div>
+
+            <p className="leading-7 mt-8 text-center text-gray-100 text-2xl font-jakarta font-normal">
               Don't have an account?{" "}
               <a href="/register" className="text-blue-700 font-medium">
                 Signup
               </a>
             </p>
+            
           </div>
         </div>
       </div>

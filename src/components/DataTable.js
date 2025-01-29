@@ -3,7 +3,7 @@ import { FaEdit, FaTrash } from "react-icons/fa"; // Import icons
 
 const DataTable = ({ data, columns, onEdit, onDelete }) => {
   const [currentPage, setCurrentPage] = useState(1); // Current page number
-  const [rowsPerPage] = useState(5); // Number of rows per page
+  const [rowsPerPage] = useState(10); // Number of rows per page
 
   // Calculate the start and end indices for the current page
   const indexOfLastRow = currentPage * rowsPerPage;
@@ -51,8 +51,7 @@ const DataTable = ({ data, columns, onEdit, onDelete }) => {
                   key={colIndex}
                   className="px-4 py-6 text-lg font-medium text-gray-100 border-t"
                 >
-                  {column.accessor === "Actions" ? (
-                    // Render action icons
+                  {column.accessor === "actions" ? (
                     <div className="flex space-x-4">
                       <button
                         onClick={() => onEdit(row)}

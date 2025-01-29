@@ -1,6 +1,6 @@
 
 .signUpBackground{
-  background-image: url('./assets/Register.svg');
+  background-image: url('./assets/register.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -8,7 +8,7 @@
   height: 100%;
 }
 .signinBackground{
-  background-image: url('./assets/Register.svg');
+  background-image: url('./assets/login.svg');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -19,8 +19,24 @@ input::placeholder, textarea::placeholder {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
 a:focus {
-  color: red;
+  color: blue;
 }
 .card{
   width: 80%;
+}
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+}
+.modal{
+  width: 60%;
+}
+@media (max-width: 600px) {
+  .modal {
+    width: 100%;
+  }
+}
+.cursor-pointer{
+  cursor: pointer;
 }
