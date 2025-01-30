@@ -18,9 +18,7 @@
 input::placeholder, textarea::placeholder {
   font-family: 'Plus Jakarta Sans', sans-serif;
 }
-a:focus {
-  color: blue;
-}
+a:active { background-color: lightgrey; color: black; }
 .card{
   width: 80%;
 }

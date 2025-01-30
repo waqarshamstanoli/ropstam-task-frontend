@@ -102,15 +102,6 @@ function Categories() {
     }
   };
 
-  // const columns = [
-  //   { header: "Name", accessor: "name" },
-  //   { header: "Model", accessor: "model" },
-  //   { header: "Color", accessor: "color" },
-  //   { header: "Make Year", accessor: "makeYear" },
-  //   { header: "Registration No.", accessor: "registrationNumber" },
-  //   { header: "Actions", accessor: "actions" },
-  // ];
-
   return (
     <div className="flex h-screen flex-col overflow-hidden p-4">
       <h1 className="text-4xl font-bold mb-4 text-gray-100">Categories</h1>
@@ -148,61 +139,8 @@ function Categories() {
                       <input {...register("name")} className="w-full bg-zinc-900 mt-2 rounded focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-100 py-3 pl-4 leading-8 transition-colors duration-200 ease-in-out" placeholder="Enter car name" />
                       {errors.name && <p className="text-red-500">{errors.name.message}</p>}
                     </div>
-                    {/* <div className="mb-8">
-                <label className="text-white text-xl font-medium font-jakarta mb-2">Car Type</label>
-                <select
-                  {...register("carType")}
-                  className="w-full bg-zinc-900 mt-2 rounded focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-100 py-4 pl-4 leading-8 transition-colors duration-200 ease-in-out"
-                >
-                  <option value="">Select Car Type</option>
-                  <option value="Sedan">Sedan</option>
-                  <option value="SUV">SUV</option>
-                  <option value="Hatchback">Hatchback</option>
-                  <option value="Coupe">Coupe</option>
-                </select>
-                {errors.carType && <p className="text-red-500">{errors.carType.message}</p>}
-              </div>
-              <div className="mb-8">
-                <label className="text-white text-xl font-medium font-jakarta ">Car Color</label>
-                <input
-                  {...register("color")}
-                 className="w-full bg-zinc-900 mt-2 rounded focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-100 py-3 pl-4 leading-8 transition-colors duration-200 ease-in-out"
-                  placeholder="Enter car color"
-                />
-                {errors.color && <p className="text-red-500">{errors.color.message}</p>}
-              </div> */}
+                   
                   </div>
-
-                  {/* <div className="col-span-12 md:col-span-6 pl-2">
-        <div className="mb-8">
-                <label className="text-white text-xl font-medium font-jakarta mb-2">Car Registration Number</label>
-                <input
-                  {...register("registrationNumber")}
-                 className="w-full bg-zinc-900 mt-2 rounded focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-100 py-3 pl-4 leading-8 transition-colors duration-200 ease-in-out"
-                  placeholder="Enter registration number"
-                />
-                {errors.registrationNumber && <p className="text-red-500">{errors.registrationNumber.message}</p>}
-              </div>
-        <div className="mb-8">
-                <label className="text-white text-xl font-medium font-jakarta mb-2">Car Model</label>
-                <input
-                  {...register("model")}
-                  className="w-full bg-zinc-900 mt-2 rounded focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-100 py-3 pl-4 leading-8 transition-colors duration-200 ease-in-out"
-                  placeholder="Enter car model"
-                />
-                {errors.model && <p className="text-red-500">{errors.model.message}</p>}
-              </div>
-              <div className="">
-                <label className="text-white text-xl font-medium font-jakarta mb-2">Car Make Year</label>
-                <input
-                  {...register("makeYear")}
-                  type="number"
-                 className="w-full bg-zinc-900 mt-2 rounded focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-100 py-3 pl-4 leading-8 transition-colors duration-200 ease-in-out"
-                  placeholder="Enter make year"
-                />
-                {errors.makeYear && <p className="text-red-500">{errors.makeYear.message}</p>}
-              </div>
-          </div> */}
                 </div>
               </div>
 

@@ -1,5 +1,5 @@
 import axios from "axios"; 
-export const API_URL = "http://localhost:3000/"; 
+export const API_URL = "http://localhost:3000/api/"; 
  
 //////// AUTH ROUTES //////// 
 export const tryLogin     = async (data) => axios.post(`${API_URL}auth/login`, data); 
