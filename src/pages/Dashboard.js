@@ -4,9 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Table from "../components/DataTable";
 import { getCar, addCar, updateCar, deleteCar, getCategories } from "../api";
-import SortIcon from "../assets/arrow-down-up.svg";
 import { format } from 'date-fns';
-// Validation Schema using Yup
 const schema = yup.object().shape({
   name: yup.string().required("Car Name is required"),
   model: yup.string().required("Car Model is required"),
@@ -27,15 +25,11 @@ function Dashboard() {
   const [cars, setCars] = useState([]);
   const [categories, setCategories] = useState([]);
   const [columns, setColumns] = useState([]);
-
-  
   const [loading, setLoading] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [success, setSuccess] = useState("");
   const [deleteCarId, setDeleteCarId] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-
-  // React Hook Form Setup
   const {
     register,
     handleSubmit,
@@ -56,27 +50,24 @@ function Dashboard() {
        const { data } = await getCar();
        setCars(data);
        setLoading(false);
-   
-       // Dynamically generate columns from the first object, excluding the __v field and replacing _id with index
        if (data.length > 0) {
          const dynamicColumns = Object.keys(data[0])
-           .filter((key) => key !== '__v' && key !== '_id') // Exclude __v and _id field
-           .map((key) => ({
-             header: key.charAt(0).toUpperCase() + key.slice(1), // Capitalize headers
+           .filter((key) => key !== '__v' && key !== '_id')
+                      .map((key) => ({
+             header: key.charAt(0).toUpperCase() + key.slice(1), 
              accessor: key,
            }));
    
-         // Add index column instead of _id
+       
          setColumns([
-           { header: "Index", accessor: "index" }, // Add "Index" column
+           { header: "Index", accessor: "index", sortable: true }, 
            ...dynamicColumns,
-           { header: "Actions", accessor: "actions" }, // Ensure Actions column is included
+           { header: "Actions", accessor: "actions", sortable: true }, 
          ]);
    
-         // Add index to each car object and format the date column if it exists
          const carsWithIndex = data.map((car, index) => ({
            ...car,
-           index: index + 1, // Add an index starting from 1
+           index: index + 1, 
            createdAt: car.createdAt ? format(new Date(car.createdAt), 'dd/MM/yyyy') : '',
            updatedAt: car.updatedAt ? format(new Date(car.updatedAt), 'dd/MM/yyyy') : '',
          }));
@@ -156,10 +147,7 @@ function Dashboard() {
         >
           Add New Car
         </button>
-        <button className="mb-4 px-4 py-2 px-4  text-gray-100 bg-gray-700 rounded hover:bg-gray-600  flex items-center gap-2">
-          <img src={SortIcon} alt="Sort" width={20} />
-          <span>Sort</span>
-        </button>
+       
       </div>
 
       <Table data={cars} columns={columns} onEdit={handleEdit} onDelete={handleDelete} />
@@ -237,21 +225,6 @@ function Dashboard() {
                 {errors.makeYear && <p className="text-red-500">{errors.makeYear.message}</p>}
               </div>
           </div></div></div>
-
-
-
-
-
-
-             
-             
-
-              
-
-             
-
-             
-
               <div className="flex justify-end space-x-4">
                 <button
                   className="px-4 py-2 bg-red-800 text-white rounded hover:bg-gray-400"
@@ -269,17 +242,29 @@ function Dashboard() {
         </div>
       )}
 
-      {showDeleteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-lg w-1/3">
-            <h2 className="text-xl font-bold mb-4">Delete Car</h2>
-            <p>Are you sure you want to delete this car?</p>
-            <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={confirmDelete}>
-              Delete
-            </button>
-          </div>
-        </div>
-      )}
+{showDeleteModal && (
+  <div className="fixed inset-0 bg-black backdrop-blur-md bg-opacity-50 flex items-center justify-center">
+    <div className="bg-black p-6 rounded  shadow-lg w-1/3">
+      <h2 className="text-xl text-white font-bold mb-4">Delete Car</h2>
+      <p className="text-white font-jakarta">Are you sure you want to delete this car?</p>
+      <div className="flex justify-end mt-4 space-x-2">
+        <button
+          className="px-4 py-2 bg-gray-300 text-white rounded hover:bg-gray-400"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          Cancel
+        </button>
+        <button
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+          onClick={confirmDelete}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

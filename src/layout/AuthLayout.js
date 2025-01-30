@@ -4,7 +4,7 @@ import car from "../assets/car.svg";
 import SettinsIcon from "../assets/Gear.svg"
 import LogoutIcon from "../assets/logout.svg"
 import Overview from "../assets/overview.svg"
-import {Outlet, useNavigate, NavLink} from 'react-router-dom';
+import {Outlet, useNavigate} from 'react-router-dom';
 import {useAuthContext} from "../context/AuthContext";
 import {useEffect, useState} from "react";
 

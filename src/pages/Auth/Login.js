@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import AlertOne from "../../components/AlertOne";
 import { useAuthContext } from "../../context/AuthContext";
 import { tryLogin } from "../../api";
-import { errorResponse } from "../../helpers/functions";
 import FacebookIcon from "../../assets/facebook.svg"
 import GoogleIcon from "../../assets/google.svg"
 import appleIcon from "../../assets/apple.svg"

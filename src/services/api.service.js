@@ -1,6 +1,5 @@
 import axios from "axios";
 import { configEnv } from "../config/configEnv";
-import { displayNotification } from "../components/Notofications";
 
 export const getRequest = async (url, token = null) => {
   try {
@@ -9,18 +8,15 @@ export const getRequest = async (url, token = null) => {
         Authorization: `${token}`,
       },
     });
-    displayNotification("success", data.message);
     return data;
   } catch (err) {
     if (err.response.data.errors) {
       let errors = err.response.data.errors;
       for (let i = 0; i < errors.length; i++) {
         for (const property in errors[i]) {
-          displayNotification("success", ` ${errors[i][property]}`);
         }
       }
     } else {
-      displayNotification("success", err.response.data.message);
     }
     throw new Error(err.message);
   }
@@ -33,7 +29,6 @@ export const postRequest = async (url, body, token = null) => {
         Authorization: `${token}`,
       },
     });
-    displayNotification("success", data.message);
 
     return data;
   } catch (err) {
@@ -41,11 +36,9 @@ export const postRequest = async (url, body, token = null) => {
       let errors = err.response.data.errors;
       for (let i = 0; i < errors.length; i++) {
         for (const property in errors[i]) {
-          displayNotification("success", ` ${errors[i][property]}`);
         }
       }
     } else {
-      displayNotification("success", err.response.data.message);
     }
     throw new Error(err.response.data.errors);
   }

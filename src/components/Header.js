@@ -1,7 +1,7 @@
 import React from "react";
-import logo from "../assets/logo.svg";
-import {useAuthContext} from "../context/AuthContext";
-import {useNavigate} from "react-router-dom";
+// import logo from "../assets/logo.svg";
+// import {useAuthContext} from "../context/AuthContext";
+// import {useNavigate} from "react-router-dom";
 
 import bell from "../assets/bell.svg";
 import avatar from "../assets/avatar.svg";

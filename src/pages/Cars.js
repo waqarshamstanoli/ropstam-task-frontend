@@ -4,10 +4,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import Table from "../components/DataTable";
 import { getCar, addCar, updateCar, deleteCar, getCategories } from "../api";
-import SortIcon from "../assets/arrow-down-up.svg";
 import { format } from 'date-fns';
 
-// Validation Schema using Yup
 const schema = yup.object().shape({
   name: yup.string().required("Car Name is required"),
   model: yup.string().required("Car Model is required"),
@@ -66,9 +64,9 @@ function Cars() {
   
         // Add index column instead of _id
         setColumns([
-          { header: "Index", accessor: "index" }, // Add "Index" column
+          { header: "Index", accessor: "index",sortable: true }, // Add "Index" column
           ...dynamicColumns,
-          { header: "Actions", accessor: "actions" }, // Ensure Actions column is included
+          { header: "Actions", accessor: "actions", sortable: true }, // Ensure Actions column is included
         ]);
   
         // Add index to each car object and format the date column if it exists
@@ -154,10 +152,7 @@ function Cars() {
         >
           Add New Car
         </button>
-        <button className="mb-4 px-4 py-2 px-4  text-gray-100 bg-gray-700 rounded hover:bg-gray-600  flex items-center gap-2">
-          <img src={SortIcon} alt="Sort" width={20} />
-          <span>Sort</span>
-        </button>
+       
       </div>
 
       <Table data={cars} columns={columns} onEdit={handleEdit} onDelete={handleDelete} />
@@ -267,17 +262,29 @@ function Cars() {
         </div>
       )}
 
-      {showDeleteModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded shadow-lg w-1/3">
-            <h2 className="text-xl font-bold mb-4">Delete Car</h2>
-            <p>Are you sure you want to delete this car?</p>
-            <button className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600" onClick={confirmDelete}>
-              Delete
-            </button>
-          </div>
-        </div>
-      )}
+{showDeleteModal && (
+  <div className="fixed inset-0 bg-black backdrop-blur-md bg-opacity-50 flex items-center justify-center">
+    <div className="bg-black p-6 rounded shadow-lg w-1/3">
+      <h2 className="text-xl font-bold mb-4 text-white">Delete Car</h2>
+      <p className="text-white font-jakarta">Are you sure you want to delete this car?</p>
+      <div className="flex justify-end mt-4 space-x-2">
+        <button
+          className="px-4 py-2 bg-gray-300 text-white rounded hover:bg-gray-400"
+          onClick={() => setShowDeleteModal(false)}
+        >
+          Cancel
+        </button>
+        <button
+          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+          onClick={confirmDelete}
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 }

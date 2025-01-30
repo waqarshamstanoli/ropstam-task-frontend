@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Main from "./layout/Main"; 
 import AuthLayout from "./layout/AuthLayout";  
 import Register from "./pages/Auth/Register";
-import Home from "./components/Home"; 
 import Auth from "./pages/Auth/Auth" 
 import Cars from "./pages/Cars"; 
 import Categories from "./pages/Categories"; 
@@ -17,7 +16,6 @@ const App = () => {
                 <Route path='/login' exact element={<Auth/>} /> 
                 <Route path='/register' exact element={<Register/>} />
                 <Route path='/' exact element={<Main/>} >
-                    <Route path='/'  element={<Home/>} />
                 </Route>
 
                 <Route path='/' exact element={<AuthLayout/>} >

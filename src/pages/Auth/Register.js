@@ -4,12 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import { tryRegister } from "../../api";
-import AlertOne from "../../components/AlertOne";
 import { useAuthContext } from "../../context/AuthContext";
 import FacebookIcon from "../../assets/facebook.svg"
 import GoogleIcon from "../../assets/google.svg"
 import appleIcon from "../../assets/apple.svg"
-// Validation schema using Yup
 const validationSchema = Yup.object().shape({
   email: Yup.string()
     .email("Enter a valid email address")
@@ -26,8 +24,6 @@ const validationSchema = Yup.object().shape({
 function Register() {
   const { saveUser, saveAuthToken } = useAuthContext();
   const navigate = useNavigate();
-
-  // Initialize React Hook Form with Yup validation resolver
   const {
     register,
     handleSubmit,
@@ -42,10 +38,10 @@ function Register() {
       const response = await tryRegister(data);
       saveAuthToken(response.data.token);
       saveUser(response.data.user);
-      reset(); // Reset the form after successful registration
+      reset(); 
       navigate("/login");
     } catch (error) {
-      console.error(error); // Handle API errors (you can customize this part)
+      console.error(error); 
     }
   };
 
