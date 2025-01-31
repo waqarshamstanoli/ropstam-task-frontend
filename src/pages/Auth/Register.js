@@ -39,7 +39,7 @@ function Register() {
       saveAuthToken(response.data.token);
       saveUser(response.data.user);
       reset(); 
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       console.error(error); 
     }

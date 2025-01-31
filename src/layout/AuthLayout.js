@@ -30,7 +30,7 @@ const AuthLayout = ({ children }) => {
         if (user) {
           logout();
         }else {
-          navigate('/login');
+          navigate('/');
         }
       } 
 
