@@ -24,7 +24,7 @@ export const AuthContextProvider = ({children}) => {
          finally {
              localStorage.removeItem(configEnv.AUTH_ACCESS_TOKEN_KEY);
              localStorage.removeItem(configEnv.AUTH_USER_OBJ);
-             window.location.replace("/login");
+             window.location.replace("/");
         }   
     } 
  

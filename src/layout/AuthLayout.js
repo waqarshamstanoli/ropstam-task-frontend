@@ -15,7 +15,7 @@ const AuthLayout = ({ children }) => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     useEffect(() => {
         if (! user) {
-            window.location.replace('/login')
+            window.location.replace('/')
         }
         console.log('auth')
     }, []);
